@@ -6,12 +6,25 @@
 
 package my.gui;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 /**
  *
  * @author asus
@@ -34,55 +47,55 @@ public class MyGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tittle = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        txtMaSV = new javax.swing.JTextField();
-        btnDong = new javax.swing.JButton();
-        btnTraCuu = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        txtMaSV1 = new javax.swing.JTextField();
-        txtNgaySinh = new javax.swing.JTextField();
-        txtGioiTinh = new javax.swing.JTextField();
-        txtNganhHoc = new javax.swing.JTextField();
-        txtDTB = new javax.swing.JTextField();
+        tittle = new JLabel();
+        jLabel1 = new JLabel();
+        txtMaSV = new JTextField();
+        btnDong = new JButton();
+        btnTraCuu = new JButton();
+        jPanel1 = new JPanel();
+        jLabel2 = new JLabel();
+        jLabel3 = new JLabel();
+        jLabel4 = new JLabel();
+        jLabel5 = new JLabel();
+        jLabel6 = new JLabel();
+        jLabel7 = new JLabel();
+        txtName = new JTextField();
+        txtMaSV1 = new JTextField();
+        txtNgaySinh = new JTextField();
+        txtGioiTinh = new JTextField();
+        txtNganhHoc = new JTextField();
+        txtDTB = new JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        tittle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tittle.setForeground(new java.awt.Color(0, 0, 204));
-        tittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tittle.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
+        tittle.setForeground(new Color(0, 0, 204));
+        tittle.setHorizontalAlignment(SwingConstants.CENTER);
         tittle.setText("QUẢN LÝ SINH VIÊN");
 
         jLabel1.setText("Nhập mã sinh viên:");
 
-        txtMaSV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtMaSV.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 txtMaSVActionPerformed(evt);
             }
         });
 
         btnDong.setText("Đóng");
-        btnDong.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDong.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnDongActionPerformed(evt);
             }
         });
 
         btnTraCuu.setText("Tra cứu");
-        btnTraCuu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTraCuu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnTraCuuActionPerformed(evt);
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin"));
+        jPanel1.setBorder(BorderFactory.createTitledBorder("Thông tin"));
 
         jLabel2.setText("Họ và tên:");
 
@@ -96,148 +109,144 @@ public class MyGui extends javax.swing.JFrame {
 
         jLabel7.setText("DTB:");
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtName.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
 
-        txtMaSV1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtMaSV1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 txtMaSV1ActionPerformed(evt);
             }
         });
 
-        txtNgaySinh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtNgaySinh.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 txtNgaySinhActionPerformed(evt);
             }
         });
 
-        txtGioiTinh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtGioiTinh.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 txtGioiTinhActionPerformed(evt);
             }
         });
 
-        txtNganhHoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtNganhHoc.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 txtNganhHocActionPerformed(evt);
             }
         });
 
-        txtDTB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtDTB.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 txtDTBActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(88, 88, 88)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7, GroupLayout.Alignment.TRAILING))
                 .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMaSV1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNganhHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDTB, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(txtName, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaSV1, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNgaySinh, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGioiTinh, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNganhHoc, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDTB, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(129, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtMaSV1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaSV1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgaySinh, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGioiTinh, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtNganhHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNganhHoc, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtDTB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDTB, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
-                        .addComponent(tittle, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tittle, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(jLabel1)
                         .addGap(43, 43, 43)
-                        .addComponent(txtMaSV, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMaSV, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnDong)
                         .addGap(18, 18, 18)
                         .addComponent(btnTraCuu)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 64, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(tittle, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tittle, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtMaSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaSV, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDong)
                     .addComponent(btnTraCuu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMaSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSVActionPerformed
+    private void txtMaSVActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtMaSVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaSVActionPerformed
 
-    private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
+    private void btnDongActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnDongActionPerformed
 
-    private void btnTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraCuuActionPerformed
+    private void btnTraCuuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnTraCuuActionPerformed
         // TODO add your handling code here:
         String maSV = txtMaSV.getText().trim();
 
@@ -268,27 +277,27 @@ public class MyGui extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnTraCuuActionPerformed
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void txtNameActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-    private void txtMaSV1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSV1ActionPerformed
+    private void txtMaSV1ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtMaSV1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaSV1ActionPerformed
 
-    private void txtNgaySinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgaySinhActionPerformed
+    private void txtNgaySinhActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtNgaySinhActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNgaySinhActionPerformed
 
-    private void txtGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGioiTinhActionPerformed
+    private void txtGioiTinhActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtGioiTinhActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGioiTinhActionPerformed
 
-    private void txtNganhHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNganhHocActionPerformed
+    private void txtNganhHocActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtNganhHocActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNganhHocActionPerformed
 
-    private void txtDTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDTBActionPerformed
+    private void txtDTBActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtDTBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDTBActionPerformed
 
@@ -328,23 +337,23 @@ public class MyGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDong;
-    private javax.swing.JButton btnTraCuu;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel tittle;
-    private javax.swing.JTextField txtDTB;
-    private javax.swing.JTextField txtGioiTinh;
-    private javax.swing.JTextField txtMaSV;
-    private javax.swing.JTextField txtMaSV1;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtNganhHoc;
-    private javax.swing.JTextField txtNgaySinh;
+    private JButton btnDong;
+    private JButton btnTraCuu;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JLabel jLabel4;
+    private JLabel jLabel5;
+    private JLabel jLabel6;
+    private JLabel jLabel7;
+    private JPanel jPanel1;
+    private JLabel tittle;
+    private JTextField txtDTB;
+    private JTextField txtGioiTinh;
+    private JTextField txtMaSV;
+    private JTextField txtMaSV1;
+    private JTextField txtName;
+    private JTextField txtNganhHoc;
+    private JTextField txtNgaySinh;
     // End of variables declaration//GEN-END:variables
 }
