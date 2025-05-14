@@ -29,7 +29,7 @@ public class Client {
                 String manufactureDate = sc.nextLine();
 
                 System.out.print("Hãng sản xuất: ");
-                String manufacturer = sc.nextLine();
+                String manufacturer = sc.nextLine(); hi
 
                 Device device = new Device(type, productId, quantity, unitPrice, manufactureDate, manufacturer);
                 oos.writeObject(device);
@@ -37,6 +37,58 @@ public class Client {
             }
 
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+// Server.java
+import java.io.*;
+import java.net.*;
+import java.util.concurrent.*;
+
+public class Server {
+    public static void main(String[] args) {
+        int port = 12345;
+        ExecutorService pool = Executors.newCachedThreadPool();
+
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Server đang lắng nghe trên cổng " + port + "...");
+
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                pool.execute(new ClientHandler(clientSocket));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class ClientHandler implements Runnable {
+    private Socket socket;
+
+    public ClientHandler(Socket socket) {
+        this.socket = socket;
+    }
+
+    public void run() {
+        try (ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())) {
+            String clientInfo = String.format("Client %s:%d", socket.getInetAddress(), socket.getPort());
+
+            System.out.printf("%n%-20s %-10s %-10s %-8s %-10s %-15s %-15s%n",
+                "Client Info", "Loại", "Mã SP", "SL", "Đơn giá", "Ngày SX", "Hãng SX");
+
+            while (true) {
+                Object obj = ois.readObject();
+                if (obj instanceof Device device) {
+                    System.out.printf("%-20s %s%n", clientInfo, device.toString());
+                }
+            }
+
+        } catch (EOFException e) {
+            System.out.println("Client đã ngắt kết nối: " + socket.getInetAddress());
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
