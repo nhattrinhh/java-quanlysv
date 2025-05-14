@@ -1,0 +1,184 @@
+-- Tạo database nếu chưa có
+CREATE DATABASE IF NOT EXISTS device_db;
+USE device_db;
+
+-- Tạo bảng devices
+CREATE TABLE IF NOT EXISTS devices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(50),
+    product_id VARCHAR(50),
+    quantity INT,
+    unit_price DOUBLE,
+    manufacture_date VARCHAR(50),
+    manufacturer VARCHAR(100)
+);
+
+
+INSERT INTO devices (type, product_id, quantity, unit_price, manufacture_date, manufacturer) VALUES
+('Desktop', 'D001', 10, 15000, '2024-01-10', 'Dell'),
+('Laptop', 'L002', 5, 22000, '2023-11-15', 'HP'),
+('Tablet PC', 'T003', 8, 12000, '2024-02-20', 'Samsung'),
+('Laptop', 'L004', 3, 25000, '2023-10-05', 'Asus'),
+('Desktop', 'D005', 7, 18000, '2024-03-18', 'Lenovo');
+
+
+// Server.java
+import java.io.*;
+import java.net.*;
+import java.sql.*;
+import java.util.concurrent.*;
+
+public class Server {
+    public static void main(String[] args) {
+        int port = 12345;
+        ExecutorService pool = Executors.newCachedThreadPool();
+
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Server đang chạy trên cổng " + port + "...");
+
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                pool.execute(new ClientHandler(clientSocket));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class ClientHandler implements Runnable {
+    private Socket socket;
+    private Connection conn;
+
+    public ClientHandler(Socket socket) {
+        this.socket = socket;
+        try {
+            // Kết nối tới MySQL dùng XAMPP
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/device_db", "root", "");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void run() {
+        try (
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
+        ) {
+            while (true) {
+                Object obj = ois.readObject();
+                if (obj instanceof Device device) {
+                    saveToDatabase(device);
+                    out.println("Bản ghi nhap thanh cong");
+                }
+            }
+
+        } catch (EOFException e) {
+            System.out.println("Client ngắt kết nối: " + socket.getInetAddress());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException ignored) {}
+        }
+    }
+
+    private void saveToDatabase(Device device) {
+        String sql = "INSERT INTO devices (type, product_id, quantity, unit_price, manufacture_date, manufacturer) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, device.getType());
+            stmt.setString(2, device.getProductId());
+            stmt.setInt(3, device.getQuantity());
+            stmt.setDouble(4, device.getUnitPrice());
+            stmt.setString(5, device.getManufactureDate());
+            stmt.setString(6, device.getManufacturer());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+public class Client {
+    public static void main(String[] args) {
+        String host = "localhost";
+        int port = 12345;
+
+        try (
+            Socket socket = new Socket(host, port);
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            Scanner scanner = new Scanner(System.in)
+        ) {
+            while (true) {
+                System.out.print("Nhập mã sản phẩm (hoặc 'quit' để thoát): ");
+                String productId = scanner.nextLine();
+                if (productId.equalsIgnoreCase("quit")) break;
+
+                // Gửi mã sản phẩm cho server
+                out.println(productId);
+
+                // Nhận kết quả từ server
+                String response;
+                while ((response = in.readLine()) != null) {
+                    if (response.equals("END")) break;
+                    System.out.println("Server: " + response);
+                }
+            }
+
+            System.out.println("Client kết thúc.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+public class Client {
+    public static void main(String[] args) {
+        String host = "localhost";
+        int port = 12345;
+
+        try (
+            Socket socket = new Socket(host, port);
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            Scanner scanner = new Scanner(System.in)
+        ) {
+            while (true) {
+                System.out.print("Nhập mã sản phẩm (hoặc 'quit' để thoát): ");
+                String productId = scanner.nextLine();
+                if (productId.equalsIgnoreCase("quit")) break;
+
+                // Gửi mã sản phẩm cho server
+                out.println(productId);
+
+                // Nhận kết quả từ server
+                String response;
+                while ((response = in.readLine()) != null) {
+                    if (response.equals("END")) break;
+                    System.out.println("Server: " + response);
+                }
+            }
+
+            System.out.println("Client kết thúc.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
