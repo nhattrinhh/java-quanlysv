@@ -1,0 +1,26 @@
+// Device.java
+import java.io.Serializable;
+
+public class Device implements Serializable {
+    private String type;
+    private String productId;
+    private int quantity;
+    private double unitPrice;
+    private String manufactureDate;
+    private String manufacturer;
+
+    public Device(String type, String productId, int quantity, double unitPrice, String manufactureDate, String manufacturer) {
+        this.type = type;
+        this.productId = productId;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.manufactureDate = manufactureDate;
+        this.manufacturer = manufacturer;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-10s %-10s %-8d %-10.2f %-15s %-15s",
+            type, productId, quantity, unitPrice, manufactureDate, manufacturer);
+    }
+}
